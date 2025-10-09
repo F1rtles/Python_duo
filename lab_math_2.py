@@ -1,132 +1,64 @@
-# lab_2 
+# import math
 
-# print("Завдання №1")
+# a = 4.0
+# b = 6.0
+# h = 0.2
+# x = a
+
+# print("Завдання 1")
+# print("|   x   |       y       |")
+
+# while x < b + h / 2:
+#     if x < 4.5:
+#         try:
+#             y = 1 / math.sin(x**2) 
+#         except ZeroDivisionError:
+#             y = float('inf')
+#             print(f"| {x:5.3f} | {'Inf.':<11s}    |")
+#             x += h
+#             continue
+    
+#     elif x < 5.0:
+#          y = x + 3.5 * math.log(x)
+
+#     else:
+#         y = math.log10(math.exp(x) + 4)
+
+#     print(f"| {x:5.3f} | {y:11.7f}   |")
+#     x += h
+
+
+
+#/
+#/
+#/
+#/
+#/
+#/
+#/
+#/
 
 # import math
 
-# def calculate_function(x):
+# a = 3.0
+# b = 4.0
+# h = 0.1
+# d = 0.001
+# x = a
 
+# print("Завдання 2")
+# print("  x    |     sum(y)")
 
-#     if x < 4.5:
-#         try:
-#             y = 1 / math.sin(x**2)
-#         except ZeroDivisionError:
-#             y = float('inf')
-#             print(f"Попередження: sin({x**2}) дуже близький до нуля при x={x}. y = Нескінченність")
-            
-#     elif 4.5 <= x < 5:
-#         try:
-#             y = x + math.log(math.sqrt(x**7)) 
-#         except ValueError as e:
-#             y = "NaN"
-#             print(f"Помилка: Неможливо обчислити ln/sqrt при x={x}. {e}")
-#     else: 
-
-#         y = math.log10(math.exp(x) + 4) 
-        
-#     return y
-
-# def tabulate_function(a, b, h):
-#     """
-#     Табулює функцію на проміжку [a, b] з кроком h.
-#     """
-#     print("---------------------------------------")
-#     print(f"Табулювання функції на інтервалі [{a}, {b}] з кроком {h}")
-#     print("---------------------------------------")
-#     print("|   x   |      f(x)     |")
-#     print("---------------------------------------")
+# while x < b + h / 2:    
+#     sum = 0.0
+#     k = 1
     
-#     x = a
+#     while True:
+#         term =  1 / k * math.tan(x / 2**k)
+#         if abs(term) < d:
+#             break
+#         k += 1
+#         sum += term
 
-#     while x <= b + h/2: 
-#         y = calculate_function(x)
-        
-
-#         if isinstance(y, (float, int)):
-#             print(f"| {x:5.3f} | {y:11.7f}   |")
-#         else:
-#             print(f"| {x:5.3f} | {y:11s}   |") 
-            
-#         x += h
-        
-#     print("---------------------------------------")
-
-# a = 4.0   
-# b = 6.0   
-# h = 0.2   
-
-# tabulate_function(a, b, h)
-
-
-import math
-
-# --- Дані з таблиці 2, рядок №3 ---
-A = 3.0        # Початок інтервалу
-B = 4.0        # Кінець інтервалу
-H = 0.1        # Крок табуляції
-DELTA = 0.001  # Абсолютна похибка (d)
-
-def calculate_series_sum(x, delta):
-    """
-    Обчислює суму ряду f(x) = sum_{k=1}^inf (1/k) * tg(x/2^k)
-    з заданою абсолютною похибкою delta.
-    
-    Повертає: (сума ряду, кількість доданих членів)
-    """
-    current_sum = 0.0
-    k = 1
-    
-    while True:
-        # 1. Обчислення k-го члена ряду: u_k = (1/k) * tg(x/2^k)
-        try:
-            term_arg = x / (2**k)
-            # math.tan() - це тангенс
-            u_k = (1 / k) * math.tan(term_arg)
-        except OverflowError:
-            # Запобіжник на випадок дуже великих значень тангенса
-            print(f"Помилка переповнення при x={x}, k={k}. Сумування припинено.")
-            return current_sum, k - 1
-        
-        # 2. Перевірка умови зупинки: |u_k| < delta
-        if abs(u_k) < delta:
-            # Точність досягнута, зупиняємо сумування
-            break
-            
-        # 3. Додавання члена до суми
-        current_sum += u_k
-        
-        # 4. Перехід до наступного члена
-        k += 1
-        
-        # Запобіжник (обмеження ітерацій на випадок, якщо ряд не збігається)
-        if k > 5000:
-             print(f"Попередження: Ряд не досяг точності {delta} за 5000 ітерацій при x={x}.")
-             break
-             
-    return current_sum, k - 1 # k-1 - це кількість доданих членів
-
-def tabulate_series(a, b, h, delta):
-    """
-    Табулює функцію, представлену рядом, на проміжку [a, b] з кроком h.
-    """
-    print("---------------------------------------------------------")
-    print(f"Табулювання ряду f(x) на інтервалі [{a}, {b}] (h={h}, похибка d={delta})")
-    print("---------------------------------------------------------")
-    print("|   x   |      f(x)     | Кількість членів |")
-    print("---------------------------------------------------------")
-    
-    x = a
-    # Обхід похибок чисел з плаваючою комою: додаємо h/2 до кінця інтервалу
-    while x <= b + h / 2: 
-        # Обчислення суми для поточного x
-        series_sum, terms_count = calculate_series_sum(x, delta)
-        
-        # Форматований вивід: x з 3-ма знаками, сума з 7-ма, кількість членів
-        print(f"| {x:5.3f} | {series_sum:11.7f}   | {terms_count:14d} |")
-            
-        x += h
-        
-    print("---------------------------------------------------------")
-
-# Виконання табулювання
-tabulate_series(A, B, H, DELTA)
+#     print(f"x: {x:.1f} | y: {sum}")
+#     x += h
