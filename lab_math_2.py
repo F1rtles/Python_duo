@@ -1,7 +1,7 @@
 # import math
 
-# a = 4.0
-# b = 6.0
+# a = 4
+# b = 6
 # h = 0.2
 # x = a
 
@@ -41,8 +41,8 @@
 
 # import math
 
-# a = 3.0
-# b = 4.0
+# a = 3
+# b = 4
 # h = 0.1
 # d = 0.001
 # x = a
@@ -55,11 +55,11 @@
 #     k = 1
     
 #     while True:
-#         term =  1 / k * math.tan(x / 2**k)
-#         if abs(term) < d:
+#         task =  1 / k * math.tan(x / 2**k)
+#         if abs(task) < d:
 #             break   
 #         k += 1
-#         sum += term
+#         sum += task
 
 #     x += h    
 #     print(f"x: {x:.1f} | y: {sum:.8f}")
