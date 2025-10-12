@@ -38,27 +38,28 @@
 #/
 #/
 
-# import math
+import math
 
-# a = 3.0
-# b = 4.0
-# h = 0.1
-# d = 0.001
-# x = a
+a = 3.0
+b = 4.0
+h = 0.1
+d = 0.001
+x = a
 
-# print("Завдання 2")
-# print("  x    |     sum(y)")
+print("Завдання 2")
+print("  x    |     sum(y)")
 
-# while x < b + h / 2:    
-#     sum = 0.0
-#     k = 1
+while x < b + h / 2:    
+    sum = 0.0
+    k = 1
     
-#     while True:
-#         term =  1 / k * math.tan(x / 2**k)
-#         if abs(term) < d:
-#             break
-#         k += 1
-#         sum += term
+    while True:
+        term =  1 / k * math.tan(x / 2**k)
+        if abs(term) < d:
+            break   
+        k += 1
+        sum += term
 
-#     print(f"x: {x:.1f} | y: {sum}")
-#     x += h
+    x += h    
+    print(f"x: {x:.1f} | y: {sum:.8f}")
+    
