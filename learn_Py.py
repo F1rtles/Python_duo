@@ -16,4 +16,7 @@
 # print(a.replace("l", "J"))
 
 # a = "Hello, World!"
-# print(a.split("l")) 
+# print(a.split("l"))
+
+for i in range(1, 11):
+    print(i)
