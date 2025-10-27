@@ -20,3 +20,24 @@
 
 # for i in range(1, 11):
 #     print(i)
+
+# thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
+# print(thislist[1:4])
+
+
+# note_1 = ["some random story about smth that happend somewhere", "block",]
+
+# note_2 = input('Enter your note:')
+
+# note_1.extend(note_2)
+# print(note_1)
+
+# thislist = ["apple", "banana", "cherry"]
+# for x in thislist:
+#     print(x)
+
+# thislist = ["apple", "banana", "cherry"]
+# i = 0
+# while i < len(thislist):
+#     print(thislist[i])
+#     i = i + 1
