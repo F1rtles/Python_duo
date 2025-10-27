@@ -1,3 +1,5 @@
+# <<<<<<<<<<<<<<<<<<<<<<<Version 1.0>>>>>>>>>>>>>>>>>>>>>>> #
+
 import random
 
 Dust_2 = ["A_site", "B_site", "Mid", "Long", "Short", "Under"]
