@@ -8,6 +8,9 @@ Inferno = ["A_site", "B_site", "Mid", "Banana", "Apartments"]
 
 Nuke = ["A_site", "B_site", "Mid", "Ramp", "Silo", "Heaven"]
 
+# current_map = []
+
+map_result = None
 
 while map_result != "exit":
 
@@ -21,4 +24,6 @@ while map_result != "exit":
         play_choice = random.choice(Inferno)
     elif map_result == "Nuke":
         play_choice = random.choice(Nuke)
+    # else:
+    #     print("error")
     print(f"Random position: {play_choice}")
